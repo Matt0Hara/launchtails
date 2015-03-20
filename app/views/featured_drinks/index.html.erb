@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="large-12">
+    <h1>Featured Drinks</h1>
+
+    <%- if !@drinks.empty? -%>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+        </tr>
+
+        <%- @drinks.each do |drink| -%>
+          <tr>
+            <td><%= drink.title %></td>
+            <td><%= drink.description.truncate(30) %></td>
+          </tr>
+        <%- end -%>
+      </table>
+
+      <%= paginate @drinks %>
+    <%- end -%>
+  </div>
+</div>

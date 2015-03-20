@@ -1,0 +1,25 @@
+<div class="row">
+  <%- if @drink.errors.present? -%>
+    <div class="large-12 alert-box alert" data-alert>
+      <ul>
+        <%- @drink.errors.full_messages.each do |error| -%>
+          <li><%= error %></li>
+        <%- end -%>
+      </ul>
+    </div>
+  <%- end -%>
+
+  <div class="large-12">
+    <h1>New Drink</h1>
+
+    <%= form_for @drink do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <%= f.submit "Add Drink" %>
+    <%- end -%>
+  </div>
+</div>
