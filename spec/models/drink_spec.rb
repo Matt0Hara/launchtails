@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Drink, type: :model do
+  it { should belong_to :category }
+
   it { should have_valid(:title).when('White Russian', 'Bourbon Neat') }
   it { should_not have_valid(:title).when('shrt', '', nil) }
+
+  it { should have_valid(:alcohol_level).when(*Drink::ALCOHOL_LEVELS) }
+  it { should_not have_valid(:alcohol_level).when('bunk') }
 
   context 'uniqueness' do
     let!(:drink) { FactoryGirl.create(:drink) }

@@ -15,4 +15,8 @@ FactoryGirl.define do
       featured true
     end
   end
+
+  factory :category do
+    sequence(:name) { |n| "Category #{n}" }
+  end
 end
