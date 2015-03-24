@@ -13,11 +13,15 @@ feature 'visitor creates drink', %Q{
   # * If I successfully add the drink, I should see it in the listing of drinks
 
   scenario 'add a valid drink' do
+    category = FactoryGirl.create(:category)
     drink_title = 'Pumpkin Martini'
     visit '/drinks/new'
 
     fill_in 'Title', with: drink_title
     fill_in 'Description', with: 'Likely the best martini you will ever have. A Thanksgiving must.'
+    check 'Featured'
+    select category.name, from: 'Category'
+    choose 'Medium'
 
     click_button 'Add Drink'
 
