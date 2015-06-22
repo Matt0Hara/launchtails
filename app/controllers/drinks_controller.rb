@@ -14,7 +14,7 @@ class DrinksController < ApplicationController
   end
 
   def index
-    @drinks = Drink.page(params[:page])
+    @drinks = Drink.all
   end
 
   protected
